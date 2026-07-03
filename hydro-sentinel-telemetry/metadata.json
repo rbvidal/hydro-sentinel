@@ -1,0 +1,6 @@
+{
+  "name": "Hydro-Sentinel",
+  "description": "A high-stakes industrial hydraulic engineering telemetry and flood prevention emergency command center dashboard.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

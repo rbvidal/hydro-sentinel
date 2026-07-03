@@ -1,0 +1,26 @@
+# Maven / Java
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
+
+# IDE (IntelliJ-specific handled by .idea/.gitignore)
+*.iml

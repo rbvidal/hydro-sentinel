@@ -1,0 +1,36 @@
+app:
+  data-source: MOCK # or EXTERNAL if using external apis
+  external-sensor-api:
+    base-url: ${EXTERNAL_SENSOR_BASE_URL:https://api.hydrosentinel.example.com/v1}
+    api-key: ${EXTERNAL_SENSOR_API_KEY:}
+    connect-timeout-ms: 5000
+    read-timeout-ms: 10000
+    endpoints:
+      stations: /stations
+      sensors: /sensors
+      rain-level: /telemetry/rain
+      basin-saturation: /telemetry/saturation
+      discharge-rate: /telemetry/discharge
+      sensor-health: /telemetry/health
+
+logging:
+  level:
+    com.hydrosentinel: DEBUG
+
+spring:
+  application:
+    name: hydro-sentinel
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:./data/hydrosentinel;MODE=PostgreSQL}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+    driver-class-name: ${DB_DRIVER:org.h2.Driver}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+server:
+  error:
+    whitelabel:
+      enabled: false

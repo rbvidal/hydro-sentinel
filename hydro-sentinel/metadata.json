@@ -1,0 +1,6 @@
+{
+  "name": "Hydro-Sentinel",
+  "description": "Vigilant environmental monitoring, river level measurements, basin saturation, and disaster monitoring system with live simulated feeds and mock integration for Java REST endpoints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

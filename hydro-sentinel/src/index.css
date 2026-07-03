@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Theme color mappings for physical monitoring & command console */
+  --color-surface: #0b1326;
+  --color-surface-dim: #0b1326;
+  --color-surface-bright: #31394d;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #e4beba;
+  --color-outline: #ab8986;
+  --color-outline-variant: #5b403e;
+
+  --color-primary: #ffb3ad; /* Urgent coral-pink highlight */
+  --color-primary-container: #ff5451; /* Hard alert red fill */
+  --color-on-primary-container: #5c0008;
+
+  --color-secondary: #adc6ff; /* Soft marine blue */
+  --color-secondary-container: #0566d9; /* Deep warning button fill */
+  --color-on-secondary-container: #e6ecff;
+
+  --color-tertiary: #4edea3; /* Vibrant safe mint green */
+  --color-tertiary-container: #00a572;
+  --color-on-tertiary-container: #00311f;
+
+  --color-background: #0b1326;
+  --color-on-background: #dae2fd;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-surface);
+    font-family: var(--font-sans);
+  }
+}
+
+/* Custom visual utility animations & glass effects */
+@keyframes live-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.15);
+  }
+}
+
+.animate-live {
+  animation: live-pulse 2s infinite ease-in-out;
+}
+
+.glass-card {
+  background: rgba(23, 31, 51, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card-alert {
+  background: rgba(147, 0, 10, 0.12);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 84, 81, 0.35);
+  box-shadow: 0 0 25px rgba(255, 84, 81, 0.15);
+}
+
+.sparkline-svg {
+  filter: drop-shadow(0px 2px 4px rgba(78, 222, 163, 0.2));
+}
+
+.sparkline-svg-alert {
+  filter: drop-shadow(0px 2px 4px rgba(255, 84, 81, 0.3));
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    transform: translateX(-5%);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(5%);
+    opacity: 0.4;
+  }
+}

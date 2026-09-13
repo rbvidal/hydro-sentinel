@@ -20,7 +20,7 @@
 ## Project overview
 
 Hydro Sentinel is a real-time flood monitoring and alert management platform. It's a Java 21 / Spring Boot 3.3.5 multi-module Maven project (group `com.hydrosentinel`, version `0.1.0-SNAPSHOT`).
-
+![img.png](img.png)
 ## Module architecture
 
 ```
@@ -59,3 +59,11 @@ Early scaffold: package structure is laid out (`domain.model`, `domain.enums`, `
 - Place business logic under `com.hydrosentinel.api.service`
 - Place configuration beans under `com.hydrosentinel.api.config`
 - Component scanning, entity scanning, and JPA repositories all scan from `com.hydrosentinel`
+
+
+Screenshots:
+![img_1.png](img_1.png)
+
+
+![img_2.png](img_2.png)
+

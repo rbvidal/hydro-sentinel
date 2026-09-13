@@ -24,6 +24,18 @@ Hydro-Sentinel is a simulated monitoring platform that visualizes water levels a
 | **Telemetry** | Independent spillway reservoir view with sensor arrays, topographic map, and gate controls. |
 | **Settings** | Alert recipient management, threshold sensitivity sliders, and operational rules. |
 
+#Dashboard:
+
+![img.png](img.png)
+
+#Telemetry
+![img_1.png](img_1.png)
+
+#System Health
+![img_2.png](img_2.png)
+
+
+
 ## Project structure
 
 ```

@@ -3,6 +3,8 @@
 **Real-time river monitoring and flood alert simulation dashboard.**
 
 > Educational project — a React + Spring Boot demonstration of a civil protection command center for hydraulic spillway and river basin monitoring.
+>
+> **You do not need Node.js to run this project.** The frontend is already compiled and committed as static files. The React/TypeScript source is included only so that anyone can customize the UI — see [Running locally](#running-locally).
 
 ## What is this?
 
@@ -44,7 +46,7 @@ hydro-sentinel/
 ├── hydro-sentinel-sensor/     # Sensor ingestion module (stub)
 ├── hydro-sentinel-alert/      # Alert evaluation module (stub)
 ├── hydro-sentinel-api/        # Spring Boot REST API + static frontend
-└── hydro-sentinel/            # React frontend (Vite)
+└── hydro-sentinel/            # React frontend source (Vite) — optional, only for UI customization
     └── src/
         ├── components/        # Dashboard UI components
         ├── config/            # Configuration files (see below)
@@ -69,9 +71,13 @@ An important distinction for anyone contributing to this project:
 
 Spring Boot serves this `static/` directory as a standard web root. The browser never sees a `.tsx` file. It only receives the compiled output that Vite produces from those sources. This separation is the foundation of the project's build pipeline and must be understood before making any changes.
 
+**The React/TypeScript source is optional.** It is included so anyone can restyle the UI, but nothing about building, running, or deploying the application requires Node.js — only *changing* the UI does. The compiled output is committed to the repository, so `mvn` plus `java -jar` is all you need to run the app as-is.
+
 ---
 
-## Development workflow: making changes to the dashboard
+## Development workflow: changing the UI (requires Node.js)
+
+**Skip this section if you just want to run the application** — see [Running locally](#running-locally). This workflow only applies when you want to modify the dashboard design or behavior.
 
 Every dashboard change follows a strict two-step process. **Skipping step 2 means your edits will not appear in the browser.**
 
@@ -175,25 +181,32 @@ To swap out the mock simulation for real production IoT sensor data, a developer
 
 ## Running locally
 
+### Option 1 — Run the application (no Node.js required)
+
+The compiled frontend is already committed to the repository, so running the app needs only Java 21 and Maven:
+
 ```bash
-# 1. Place mock video files (optional but recommended)
-cp your-videos/*.mp4 hydro-sentinel/public/videos/
+# 1. Package the backend (from the repository root)
+mvn -pl hydro-sentinel-api -am package -DskipTests
 
-# 2. Install frontend dependencies
-cd hydro-sentinel
-npm install
-
-# 3. Build the frontend (compiles .tsx → static files in the Java module)
-npm run build
-
-# 4. Start the Spring Boot backend (serves the compiled static files + REST API)
-cd ../hydro-sentinel-api
-mvn spring-boot:run
-
-# 5. Open http://localhost:8080
+# 2. Start it — serves the compiled frontend and the REST API
+java -jar hydro-sentinel-api/target/hydro-sentinel-api-0.1.0-SNAPSHOT.jar
 ```
 
-Place mock video files in `hydro-sentinel/public/videos/` before step 3. Vite copies them into the Spring Boot static resources directory automatically during the build.
+Then open http://localhost:8080. The mock camera videos are already included.
+
+### Option 2 — Change the UI first (requires Node.js)
+
+Only needed if you want to modify the dashboard — see [Development workflow](#development-workflow-changing-the-ui-requires-nodejs) above:
+
+```bash
+# 1. Install frontend dependencies and rebuild the static frontend
+cd hydro-sentinel
+npm install
+npm run build   # compiles .tsx → static files in hydro-sentinel-api/src/main/resources/static/
+
+# 2. Then package and run as in Option 1
+```
 
 ---
 
